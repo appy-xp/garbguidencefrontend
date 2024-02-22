@@ -4,6 +4,11 @@ import { PopupComponent } from './popup.component';
 import { PaginationComponent } from './pagination.component';
 import { BreadcumbComponent } from './breadcumb.component';
 import { BoxesComponent } from './boxes.component';
+import { CDBFreeModule } from 'ng-cdbangular';
+import { LoaderComponent } from './loader.component';
+import { TablecomponentComponent } from './tablecomponent.component';
+import { MaterialExampleModule } from './../material.module';
+import { ModalComponent } from './modal.component';
 
 @NgModule({
   declarations: [
@@ -11,8 +16,16 @@ import { BoxesComponent } from './boxes.component';
     PaginationComponent,
     BreadcumbComponent,
     BoxesComponent,
+    LoaderComponent,
+    TablecomponentComponent,
+    ModalComponent,
   ],
-  imports: [CommonModule],
-  exports: [BoxesComponent],
+  imports: [CommonModule, CDBFreeModule, MaterialExampleModule],
+  exports: [
+    BoxesComponent,
+    PopupComponent,
+    BreadcumbComponent,
+    PaginationComponent,
+  ],
 })
 export class ComponentsModule {}

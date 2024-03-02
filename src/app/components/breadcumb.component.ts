@@ -3,12 +3,12 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-breadcumb',
   template: `
-    <div class="container">
+    <div class="">
       <div class="row">
         <div class="col-xl-12 col-xxl-12 col-sm-12 col-md-12">
-          <CDBBreadcrumb color="light" class="align-items-center p-3">
+          <CDBBreadcrumb color="black" class="align-items-center p-3">
             <li class="breadcrumb-item">
-              <CDBLink class="p-0" [to]="homeLink">Home</CDBLink>
+              <CDBLink class="p-0 text-white" [to]="homeLink">Home</CDBLink>
             </li>
             <CDBIcon
               class="mx-2 text-muted"
@@ -16,7 +16,9 @@ import { Component, OnInit, Input } from '@angular/core';
               icon="angle-double-right"
             ></CDBIcon>
             <li class="breadcrumb-item">
-              <CDBLink class="p-0" [to]="titleLink">{{ titlename }}</CDBLink>
+              <CDBLink class="p-0 text-white" [to]="titleLink">{{
+                titlename
+              }}</CDBLink>
             </li>
             <CDBIcon
               class="mx-2 text-muted"
@@ -25,7 +27,7 @@ import { Component, OnInit, Input } from '@angular/core';
               *ngIf="titleSubname?.length"
             ></CDBIcon>
             <li class="breadcrumb-item" *ngIf="titleSubname?.length">
-              <CDBLink class="p-0">{{ titleSubname }}</CDBLink>
+              <CDBLink class="p-0 text-white">{{ titleSubname }}</CDBLink>
             </li>
           </CDBBreadcrumb>
         </div>

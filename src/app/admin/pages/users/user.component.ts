@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../components/interfaces/tablecolumn.interface';
-import { SizesModel } from '../../models/sizes.model';
+import { UsersModel } from '../../models/users.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sizes',
+  selector: 'app-user',
   template: `
     <div class="p-3">
       <app-breadcumb
-        [titlename]="'Size'"
+        [titlename]="'User'"
         [titleSubname]="'List'"
-        [homeLink]="'/adm/mydash'"
-        [titleLink]="'/adm/size'"
+        [homeLink]="'/adm/'"
+        [titleLink]="'/adm/users'"
       ></app-breadcumb>
-      <button class="btn btn-light" [routerLink]="['/adm/size/addnew']">
-        Add Size
-      </button>
     </div>
     <app-tablecomponent
-      [tableData]="sizeList"
-      [tableColumns]="sizeTableColumns"
+      [tableData]="userList"
+      [tableColumns]="userTableColumns"
       [isFilterable]="true"
       [isPageable]="true"
       [paginationSizes]="[10, 25, 50]"
@@ -28,9 +25,9 @@ import { Router } from '@angular/router';
   `,
   styles: [],
 })
-export class SizesComponent implements OnInit {
-  sizeList: SizesModel[];
-  sizeTableColumns: TableColumn[];
+export class UserComponent implements OnInit {
+  userList: UsersModel[];
+  userTableColumns: TableColumn[];
 
   constructor(private router: Router) {}
 
@@ -40,18 +37,14 @@ export class SizesComponent implements OnInit {
   }
   getItems() {}
   initColumns(): void {
-    this.sizeTableColumns = [
+    this.userTableColumns = [
       {
-        name: 'Size Name',
-        dataKey: 'sizeName',
+        name: 'Email',
+        dataKey: 'email',
       },
       {
-        name: 'Size Code',
-        dataKey: 'sizeCode',
-      },
-      {
-        name: 'Details',
-        dataKey: 'sizeDetail',
+        name: 'User-name',
+        dataKey: 'username',
       },
     ];
   }

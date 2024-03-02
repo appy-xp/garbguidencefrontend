@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -41,6 +42,9 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
             <CDBSidebarMenuItem link="/adm/assign-detail" icon="network-wired">
               Assign Details
             </CDBSidebarMenuItem>
+            <CDBSidebarMenuItem link="/adm/items" icon="network-wired">
+              Items
+            </CDBSidebarMenuItem>
             <CDBSidebarMenuItem link="/adm/item-progress" icon="network-wired">
               Item Progress
             </CDBSidebarMenuItem>
@@ -61,7 +65,9 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 export class SidebarComponent implements OnInit {
   @Input() bgColor: String = '';
   @Input() color: String = '';
-  constructor() {}
+  constructor(public router: Router) {}
   ngOnInit(): void {}
-  userlogout() {}
+  userlogout() {
+    this.router.navigate(['/authen/login']);
+  }
 }

@@ -1,42 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
-import { BrandsModel } from '../../models/brands.model';
+import { ItemModel } from '../../models/items.model';
 
 @Component({
-  selector: 'app-editbrand',
+  selector: 'app-edititem',
   template: `
     <div class="p-3">
       <app-breadcumb
-        [titlename]="'Brands'"
+        [titlename]="'Items'"
         [titleSubname]="'Edit'"
       ></app-breadcumb>
-      <button class="btn btn-light" [routerLink]="['/adm/brands/']">
-        List Brands
+      <button class="btn btn-light" [routerLink]="['/adm/item/']">
+        List Item
       </button>
     </div>
     <div class="container" *ngIf="!loading">
       <app-loader></app-loader>
     </div>
     <div class="container" *ngIf="loading">
-      <app-brandform
+      <app-itemform
         [action]="'updatedata'"
-        [brandData]="mybrandDetails"
+        [itemData]="myItemDetails"
         [imagePath]="imagePath"
-      ></app-brandform>
+      ></app-itemform>
     </div>
   `,
   styles: [],
 })
-export class EditbrandComponent implements OnInit {
-  brandid: string;
-  mybrandDetails: any;
+export class EdititemComponent implements OnInit {
+  itemid: string;
+  myItemDetails: any;
   loading: boolean = false;
   imagePath: string;
 
   constructor(private activatedRoute: ActivatedRoute) {
-    this.brandid = this.activatedRoute.snapshot.params['id'];
-    this.mybrandDetails = new BrandsModel({});
+    this.itemid = this.activatedRoute.snapshot.params['id'];
+    this.myItemDetails = new ItemModel({});
     this.getBrandDetails();
   }
   ngOnInit(): void {}

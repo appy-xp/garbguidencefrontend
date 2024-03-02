@@ -7,10 +7,10 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
-import { SizesModel } from '../../models/sizes.model';
+import { ItemModel } from '../../models/items.model';
 
 @Component({
-  selector: 'app-sizeform',
+  selector: 'app-itemform',
   template: `
     <div class="container">
       <div class="card">
@@ -20,59 +20,66 @@ import { SizesModel } from '../../models/sizes.model';
           </div>
         </div>
         <div class="card-body">
-          <form [formGroup]="sizeForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
             <div class="d-flex justify-content-start">
               <div class="w-25">
-                <h4>Size Name <span class="text-danger">(*)</span></h4>
+                <h4>Model Name <span class="text-danger">(*)</span></h4>
               </div>
               <div class="w-75">
                 <input
                   matInput
-                  placeholder="Size Name"
+                  placeholder="Model Name"
                   required
-                  formControlName="sizeName"
+                  formControlName="modelName"
                   [ngClass]="{
-                    'is-invalid': submitted && f['sizeName'].errors
+                    'is-invalid': submitted && f['modelName'].errors
                   }"
                   class="w-100 inputfield poppins font-weight-600"
                 />
-                <span *ngIf="submitted && f['sizeName'].errors?.['required']">{{
-                  getErrorMessage('sizeName', 'required')
+                <span
+                  *ngIf="submitted && f['modelName'].errors?.['required']"
+                  >{{ getErrorMessage('modelName', 'required') }}</span
+                >
+              </div>
+            </div>
+            <div class="d-flex justify-content-start">
+              <div class="w-25">
+                <h4>Item Name <span class="text-danger">(*)</span></h4>
+              </div>
+              <div class="w-75">
+                <input
+                  matInput
+                  placeholder="Item Name"
+                  required
+                  formControlName="itemName"
+                  [ngClass]="{
+                    'is-invalid': submitted && f['itemName'].errors
+                  }"
+                  class="w-100 inputfield poppins font-weight-600"
+                />
+                <span *ngIf="submitted && f['itemName'].errors?.['required']">{{
+                  getErrorMessage('itemName', 'required')
                 }}</span>
               </div>
             </div>
             <div class="d-flex justify-content-start">
               <div class="w-25">
-                <h4>Size Code <span class="text-danger">(*)</span></h4>
+                <h4>Quantity <span class="text-danger">(*)</span></h4>
               </div>
               <div class="w-75">
                 <input
                   matInput
-                  placeholder="Size Code"
+                  placeholder="Quantity"
                   required
-                  formControlName="sizeCode"
+                  formControlName="quantity"
                   [ngClass]="{
-                    'is-invalid': submitted && f['sizeCode'].errors
+                    'is-invalid': submitted && f['quantity'].errors
                   }"
                   class="w-100 inputfield poppins font-weight-600"
                 />
-                <span *ngIf="submitted && f['sizeCode'].errors?.['required']">{{
-                  getErrorMessage('sizeCode', 'required')
+                <span *ngIf="submitted && f['quantity'].errors?.['required']">{{
+                  getErrorMessage('quantity', 'required')
                 }}</span>
-              </div>
-            </div>
-            <div class="d-flex justify-content-start">
-              <div class="w-25">
-                <h4>Size Details <span class="text-danger">(*)</span></h4>
-              </div>
-              <div class="w-75">
-                <textarea
-                  matInput
-                  placeholder="Size Details"
-                  required
-                  formControlName="sizeDetail"
-                  class="w-100 inputfield poppins font-weight-600"
-                ></textarea>
               </div>
             </div>
 
@@ -80,7 +87,7 @@ import { SizesModel } from '../../models/sizes.model';
               <div class="text-center px-5 ">
                 <button
                   class="btn bg-color-brand me-2 text-color-white submit-width poppins fontsize-16 border-radius-20 px-5"
-                  [disabled]="!sizeForm.valid"
+                  [disabled]="!itemForm.valid"
                 >
                   <span
                     *ngIf="loading"
@@ -102,60 +109,60 @@ import { SizesModel } from '../../models/sizes.model';
   `,
   styles: [],
 })
-export class SizeformComponent implements OnInit {
+export class ItemformComponent implements OnInit {
   @Input() action: string;
-  @Input() sizeData: SizesModel;
+  @Input() itemData: ItemModel;
   formtitle = '';
   loading = false;
   error = '';
-  sizeDetails;
-  sizeForm!: FormGroup;
+  itemDetails;
+  itemForm!: FormGroup;
   submitted = false;
   constructor(private formBuilder: FormBuilder, private router: Router) {
-    this.sizeDetails = new SizesModel({});
+    this.itemDetails = new ItemModel({});
   }
   ngOnInit(): void {
     if (this.action == 'updatedata') {
-      this.sizeDetails = this.sizeData;
+      this.itemDetails = this.itemData;
 
-      this.formtitle = 'Edit Size Details';
+      this.formtitle = 'Edit Item Details';
     } else {
-      this.formtitle = 'Add Size Details';
+      this.formtitle = 'Add Item Details';
     }
-    this.sizeForm = this.formBuilder.group({
-      sizeName: [this.sizeDetails.sizeName, [Validators.required]],
-      sizeCode: [this.sizeDetails.sizeCode, [Validators.required]],
-      sizeDetail: [this.sizeDetails.sizeDetail],
+    this.itemForm = this.formBuilder.group({
+      modelName: [this.itemDetails.modelName, [Validators.required]],
+      itemName: [this.itemDetails.itemName, [Validators.required]],
+      quantity: [this.itemDetails.quantity, [Validators.required]],
     });
   }
   get f() {
-    return this.sizeForm.controls;
+    return this.itemForm.controls;
   }
-  get sizeName() {
-    return this.sizeForm.get('sizeName');
+  get modelName() {
+    return this.itemForm.get('modelName');
   }
-  get sizeCode() {
-    return this.sizeForm.get('sizeCode');
+  get itemName() {
+    return this.itemForm.get('itemName');
   }
-  get sizeDetail() {
-    return this.sizeForm.get('sizeDetail');
+  get quantity() {
+    return this.itemForm.get('quantity');
   }
   public getErrorMessage = (controlName: string, errorName: string) => {
-    this.sizeForm.controls[controlName].hasError(errorName);
+    this.itemForm.controls[controlName].hasError(errorName);
     return controlName + ' is ' + errorName;
   };
   onSubmit() {
-    var submissionData: SizesModel = this.sizeForm.value;
-    if (this.sizeForm.invalid) {
+    var submissionData: ItemModel = this.itemForm.value;
+    if (this.itemForm.invalid) {
       return;
     }
 
     if (this.action == 'updatedata') {
-      submissionData.id = this.sizeDetails.id;
+      submissionData.id = this.itemDetails.id;
     }
     this.manageMysubmissionData(submissionData);
   }
-  manageMysubmissionData(submissionData: SizesModel) {
+  manageMysubmissionData(submissionData: ItemModel) {
     this.loading = true;
   }
 }

@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../components/interfaces/tablecolumn.interface';
-import { SizesModel } from '../../models/sizes.model';
+import { ItemModel } from '../../models/items.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sizes',
+  selector: 'app-items',
   template: `
     <div class="p-3">
       <app-breadcumb
-        [titlename]="'Size'"
-        [titleSubname]="'List'"
+        [titlename]="'Item'"
+        [titleSubname]="'Add'"
         [homeLink]="'/adm/mydash'"
-        [titleLink]="'/adm/size'"
+        [titleLink]="'/adm/items'"
       ></app-breadcumb>
-      <button class="btn btn-light" [routerLink]="['/adm/size/addnew']">
-        Add Size
+      <button class="btn btn-light" [routerLink]="['/adm/items/addnew']">
+        Add Items
       </button>
     </div>
     <app-tablecomponent
-      [tableData]="sizeList"
-      [tableColumns]="sizeTableColumns"
+      [tableData]="itemList"
+      [tableColumns]="itemTableColumns"
       [isFilterable]="true"
       [isPageable]="true"
       [paginationSizes]="[10, 25, 50]"
@@ -28,9 +28,9 @@ import { Router } from '@angular/router';
   `,
   styles: [],
 })
-export class SizesComponent implements OnInit {
-  sizeList: SizesModel[];
-  sizeTableColumns: TableColumn[];
+export class ItemsComponent implements OnInit {
+  itemList: ItemModel[];
+  itemTableColumns: TableColumn[];
 
   constructor(private router: Router) {}
 
@@ -40,18 +40,18 @@ export class SizesComponent implements OnInit {
   }
   getItems() {}
   initColumns(): void {
-    this.sizeTableColumns = [
+    this.itemTableColumns = [
       {
-        name: 'Size Name',
-        dataKey: 'sizeName',
+        name: 'Model Name',
+        dataKey: 'modelName',
       },
       {
-        name: 'Size Code',
-        dataKey: 'sizeCode',
+        name: 'Item Name',
+        dataKey: 'itemName',
       },
       {
-        name: 'Details',
-        dataKey: 'sizeDetail',
+        name: 'Quantity',
+        dataKey: 'quantity',
       },
     ];
   }

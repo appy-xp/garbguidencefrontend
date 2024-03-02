@@ -44,6 +44,12 @@
 .text-color-white{
     color: white !important;
 }
+.text-color-black{
+    color: black !important;
+}
+.text-color-black::placeholder{
+    color: black !important;
+}
 .font-weight-600{
     font-weight: 600 !important;
 }
@@ -56,6 +62,9 @@
 .height-56px{
     height: 56px !important;
 }
+.border-radius-20{
+    border-radius: 20px !important;
+}
 
 .form-eye{
     margin-top: -40px !important;
@@ -67,6 +76,17 @@
 .width-submit-button{
     width: 172px !important;
     border-radius: 50px !important;
+}
+.inputfield{
+    background-color: #F1F1F1 !important;
+    border:0px solid #F1F1F1 !important;
+    height: 35px !important;
+    padding: 2px 5px 2px 5px !important;
+}
+.inputfield::placeholder{
+    color: black;
+    font-size: 14px;
+    line-height: 21px;
 }
 
 @media (max-width: 575.98px) {

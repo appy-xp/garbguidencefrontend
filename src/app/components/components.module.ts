@@ -26,6 +26,7 @@ import { ModalComponent } from './modal.component';
     PopupComponent,
     BreadcumbComponent,
     PaginationComponent,
+    TablecomponentComponent,
   ],
 })
 export class ComponentsModule {}

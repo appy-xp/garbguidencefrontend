@@ -14,6 +14,10 @@ import { EditsizeComponent } from './pages/size/editsize.component';
 import { StaffComponent } from './pages/staffs/staff.component';
 import { NewstaffComponent } from './pages/staffs/newstaff.component';
 import { EditstaffComponent } from './pages/staffs/editstaff.component';
+import { ItemsComponent } from './pages/item/items.component';
+import { NewitemComponent } from './pages/item/newitem.component';
+import { EdititemComponent } from './pages/item/edititem.component';
+import { UserComponent } from './pages/users/user.component';
 
 const routes: Routes = [
   {
@@ -37,6 +41,12 @@ const routes: Routes = [
       { path: 'staffs', component: StaffComponent },
       { path: 'staffs/addnew', component: NewstaffComponent },
       { path: 'staffs/edit/:id', component: EditstaffComponent },
+
+      { path: 'items', component: ItemsComponent },
+      { path: 'items/addnew', component: NewitemComponent },
+      { path: 'items/edit/:id', component: EdititemComponent },
+
+      { path: 'users', component: UserComponent },
     ],
   },
 ];

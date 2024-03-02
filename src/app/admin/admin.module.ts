@@ -31,9 +31,40 @@ import { StaffComponent } from './pages/staffs/staff.component';
 import { StaffformComponent } from './pages/staffs/staffform.component';
 import { NewstaffComponent } from './pages/staffs/newstaff.component';
 import { EditstaffComponent } from './pages/staffs/editstaff.component';
-
+import { MaterialExampleModule } from './../material.module';
+import { ComponentsModule } from './../components/components.module';
+import { ItemformComponent } from './pages/item/itemform.component';
+import { ItemsComponent } from './pages/item/items.component';
+import { EdititemComponent } from './pages/item/edititem.component';
+import { NewitemComponent } from './pages/item/newitem.component';
+import { UserComponent } from './pages/users/user.component';
 @NgModule({
-  declarations: [DashboardComponent, AdmindashboardComponent, SidebarComponent, PurchaseComponent, PurchaseformComponent, NewpurchaseComponent, EditpurchaseComponent, SizesComponent, SizeformComponent, NewsizeComponent, EditsizeComponent, BrandsComponent, BrandformComponent, EditbrandComponent, NewbrandComponent, StaffComponent, StaffformComponent, NewstaffComponent, EditstaffComponent],
+  declarations: [
+    DashboardComponent,
+    AdmindashboardComponent,
+    SidebarComponent,
+    PurchaseComponent,
+    PurchaseformComponent,
+    NewpurchaseComponent,
+    EditpurchaseComponent,
+    SizesComponent,
+    SizeformComponent,
+    NewsizeComponent,
+    EditsizeComponent,
+    BrandsComponent,
+    BrandformComponent,
+    EditbrandComponent,
+    NewbrandComponent,
+    StaffComponent,
+    StaffformComponent,
+    NewstaffComponent,
+    EditstaffComponent,
+    ItemformComponent,
+    ItemsComponent,
+    EdititemComponent,
+    NewitemComponent,
+    UserComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -46,6 +77,8 @@ import { EditstaffComponent } from './pages/staffs/editstaff.component';
     HttpClientModule,
     ReactiveFormsModule,
     CDBFreeModule,
+    MaterialExampleModule,
+    ComponentsModule,
   ],
 })
 export class AdminModule {}
